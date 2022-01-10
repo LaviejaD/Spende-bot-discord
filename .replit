@@ -1,0 +1,1 @@
+run = "npm run node-update && npm run build &&  node server.js"
