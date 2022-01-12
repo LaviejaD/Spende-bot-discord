@@ -7,8 +7,8 @@ import { dbconnect } from "./mongodb/mongoose";
 //import { log } from "./utils/log";
 
 (async () => {
-  process.env['TIMEUP'] = `${new Date().getTime()
-    }`
+  process.env['TIMEUP'] = `${new Date().getTime()} `
+
   const client = new Client({ intents: [4625] });
   config();
 

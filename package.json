@@ -8,10 +8,9 @@
     "start": "npm run build && node .",
     "build": "npx tsc",
     "dev": "npx rimraf ./dist &&   nodemon"
-   
   },
   "keywords": [],
-  "author": "Onlyd",
+  "author": "OnlyD",
   "license": "ISC",
   "dependencies": {
     "@discordjs/builders": "^0.9.0",
