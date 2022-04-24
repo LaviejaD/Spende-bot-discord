@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "npm run build && node .",
-    "build": "npx tsc",
+    "build": "tsc",
     "dev": "npx rimraf ./dist &&   nodemon"
   },
   "keywords": [],
