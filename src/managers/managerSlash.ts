@@ -39,8 +39,9 @@ export function SlashRegister() {
 		try { await rest.put(route, { body: Commands }) }
 		catch (error) { console.log(error) }
 
-		log(`Slash Commands Ready`)
+
 		done()
+
 	})
 }
 

@@ -1,15 +1,12 @@
-//import { Client, Message } from "discord.js";
-import { interfaceExecute, interfaceCommands } from "../utils/interface/Commands"
+import { interfaceCommands } from "./commandsinter"
 
-const execute: interfaceExecute = (message): void => {
-	message.reply('hola')
-}
-
-const export_: interfaceCommands = {
+const command: interfaceCommands = {
 	name: 'claim',
 	alise: ' ',
 	devperms: false,
-	execute: execute
+	execute: (message): void => {
+		message.reply('hola')
+	}
 }
 
-module.exports = export_
+export = command

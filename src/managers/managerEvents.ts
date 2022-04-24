@@ -7,7 +7,7 @@ import { log } from "../utils/log";
 
 export function ManagerEvents(client: Client) {
 
-	return new Promise<void>((resolve) => {
+	return new Promise<void>((done) => {
 		log('Loading events:')
 		const files = readdirSync(join(__dirname, '../events'))
 
@@ -19,8 +19,9 @@ export function ManagerEvents(client: Client) {
 			error ? log(` Error to load event:${file} `, 'error-loader') : log(`${file}`, 'loader');
 
 		})
-		log('Events is Ready')
-		resolve()
+
+		done()
+		
 	})
 
 
