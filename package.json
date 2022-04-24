@@ -9,7 +9,7 @@
     "npm": ">7.21.0"
   },
   "scripts": {
-    "start": "npm run build && node .",
+    "start": "node .",
     "build": "tsc",
     "dev": "npx rimraf ./dist &&   nodemon"
   },
