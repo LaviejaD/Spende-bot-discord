@@ -6,5 +6,5 @@
 	"ignore": [
 		"src/**/*.spec.ts"
 	],
-	"exec": "clear && npx ts-node ./src/index.ts"
+	"exec": ""
 }

@@ -5,5 +5,13 @@ import { Client } from 'discord.js';
 export function execute(client: Client) {
 	client.on('guildMemberAdd', async (menber) => {
 
+		let server1 = "a";
+
+
+		
+		if (menber.guild.id === server1) {
+
+		}
+
 	})
 }

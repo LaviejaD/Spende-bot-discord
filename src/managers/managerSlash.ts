@@ -5,7 +5,8 @@ import { REST } from "@discordjs/rest";
 import { Routes } from "discord-api-types/v9";
 
 import { log } from "../utils/log";
-const { GuildId }: { GuildId: string } = require("../configuration/bot").default
+import { configbot } from "../configuration/bot";
+const { prefix, GuildId } = configbot;
 
 interface slashcommandIterface {
 	name: string, data: any, execute(client: Client, interaction: Interaction): void
@@ -32,12 +33,12 @@ export function SlashRegister() {
 				log(`Commands slash ${folder} is save`, 'loader')
 			})
 
-		const route = process.env['DEV']
+		const route = process.env['DEV'] == "true"
 			? Routes.applicationGuildCommands(`${process.env['BOTCLIENT']}`, GuildId)
 			: Routes.applicationCommands(`${process.env['BOTCLIENT']}`);
 
 		try { await rest.put(route, { body: Commands }) }
-		catch (error) { console.log(error) }
+		catch (error) { console.log(error.name) }
 
 
 		done()

@@ -10,8 +10,8 @@
   },
   "scripts": {
     "start": "node .",
-    "build": "tsc",
-    "dev": "npx rimraf ./dist &&   nodemon"
+    "build": "tsc --project tsconfig.json",
+    "dev": "npx rimraf ./dist &&   tsnd --respawn ./src/index.ts"
   },
   "keywords": [],
   "author": "OnlyD",
@@ -24,10 +24,12 @@
     "dotenv": "^10.0.0",
     "mongoose": "^6.0.13",
     "node-cache": "^5.1.2",
-    "node-color-log": "^7.0.0"
+    "node-color-log": "^7.0.0",
+    "socket.io": "^4.5.1"
   },
   "devDependencies": {
     "@types/node-cache": "^4.2.5",
+    "ts-node-dev": "1.1.8",
     "typescript": "^4.6.3"
   }
 }

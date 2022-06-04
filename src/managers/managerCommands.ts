@@ -5,7 +5,7 @@ import { join } from 'path';
 // local import
 import { log } from "../utils/log";
 import { interfaceCommands } from "../commands/commandsinter"
-import { GuildsGet } from '../mongodb/cache/Guilds/guildscache'
+import { GuildsGet } from '../database/cache/Guilds/guildscache'
 
 //const for Commands 
 export const Commands = new Map<string, interfaceCommands>()
@@ -58,6 +58,7 @@ export async function managerCommands(client: Client, message: Message) {
 	const command = Commands.has(cmd) ? Commands.get(cmd)
 		: Commands.forEach((comando: interfaceCommands) => { if (comando.alise.includes(cmd)) { return comando } })
 
+	console.log(command)
 	if (command) return command.execute(message, args, client);
 
 }
