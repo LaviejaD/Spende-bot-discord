@@ -19,5 +19,5 @@ console.log('adasd');
 
   await dbconnect().catch(console.log);
   start(client);
-  require("./service/serversocket")
+
 })();
