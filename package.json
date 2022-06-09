@@ -1,7 +1,6 @@
 {
   "name": "spende-discord-bot",
   "version": "1.0.0",
-  "description": "",
   "main": "./dist/index.js",
   "type": "commonjs",
   "engines": {
@@ -25,11 +24,20 @@
     "mongoose": "^6.0.13",
     "node-cache": "^5.1.2",
     "node-color-log": "^7.0.0",
-    "socket.io": "^4.5.1"
+    "socket.io-client": "^4.5.1"
   },
   "devDependencies": {
     "@types/node-cache": "^4.2.5",
     "ts-node-dev": "1.1.8",
     "typescript": "^4.6.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LaviejaD/Spende-bot-discord.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LaviejaD/Spende-bot-discord/issues"
+  },
+  "homepage": "https://github.com/LaviejaD/Spende-bot-discord#readme",
+  "description": ""
 }

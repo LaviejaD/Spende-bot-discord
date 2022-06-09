@@ -5,16 +5,12 @@ config();
 //local import
 import { start } from "./managers/managerClient";
 import { dbconnect } from "./database/mongoose";
-import { ServerSocket } from "./service/serversocket";
 console.log('adasd');
 //import { log } from "./utils/log";
 
 
 (async () => {
-
-
-  process.env['TIMEUP'] = `${new Date().getTime()} `
-
+  process.env['TIMEUP'] = `${new Date().getTime()} `;
   const client = new Client({
     partials:
       ["USER", "MESSAGE", "GUILD_MEMBER", "CHANNEL"],
@@ -22,10 +18,6 @@ console.log('adasd');
   });
 
   await dbconnect().catch(console.log);
-
-  await start(client);
-  ServerSocket();
-
-
-
+  start(client);
+  require("./service/serversocket")
 })();
