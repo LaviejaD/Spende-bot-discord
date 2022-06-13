@@ -8,7 +8,7 @@ import { interfaceCommands } from "../commands/commandsinter"
 import { GuildsGet } from '../database/cache/Guilds/guildscache'
 
 //const for Commands 
-export const Commands = new Map<string, interfaceCommands>()
+export const Commands = new Map<string, { pathfile: string, alise }>()
 
 /** register Commands to Map
  */
@@ -21,11 +21,12 @@ export function registerCommands() {
 
 		log('Register Commands');
 
-		files.forEach((file) => {
+		files.filter((f) => f != 'commandsinter.d.ts').forEach((file) => {
 
-			if (file === 'commandsinter.d.ts') { return }
+
 			const pathfile = join(__dirname, `../commands/${(file.split('.'))[0]}`)
 			let Command = require(pathfile);
+
 			let error = false
 
 			Object.entries(propierty).forEach(([A, B]) => {
@@ -34,15 +35,18 @@ export function registerCommands() {
 
 				Command[A] === undefined ? errorPropierty = true : false;
 				!(typeof Command[A] === B) ? errorType = true : false;
-
 				if (errorPropierty) log(` faltante ${A} en ${file}`, 'error-loader');
 				if (errorType) log(`Property "${A}" is not the correct type must be "${B}" in ${file}`, 'error-loader');
-				if (errorPropierty || errorType) return error = true;
+				if (errorPropierty || errorType) error = true;
 
 			})
-			if (!error) { log(`Command ${file} is save`, 'loader'); Commands.set(Command.name, Command); return }
-			return log(`${file} not is a command`, 'warng');
+			if (error) return log(`${file} not is a command`, 'warng');
 
+			log(`Command ${file} is save`, 'loader');
+			return Commands.set(Command.name, {
+				pathfile: pathfile,
+				alise: Command.alise
+			});
 		})
 
 		done()
@@ -55,10 +59,10 @@ export async function managerCommands(client: Client, message: Message) {
 	const { prefix }: { prefix: string } = await GuildsGet(`${message.guild?.id}`);
 	const args = message.content.trim().split(/ +/g);
 	const cmd = args[0].slice(prefix.length).toLowerCase()
-	const command = Commands.has(cmd) ? Commands.get(cmd)
-		: Commands.forEach((comando: interfaceCommands) => { if (comando.alise.includes(cmd)) { return comando } })
-
-	console.log(command)
-	if (command) return command.execute(message, args, client);
+	let comando: interfaceCommands | boolean = false;
+	if (!Commands.has(cmd)) Commands.forEach(
+		(value) => value.alise.includes(cmd) ? comando = require(value.pathfile).execute : false)
+	//@ts-ignore
+	if (comando) comando(message, args, client);
 
 }

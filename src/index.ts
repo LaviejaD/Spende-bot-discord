@@ -1,16 +1,14 @@
 //module import
 import { Client } from "discord.js";
 import { config } from "dotenv";
+
 config();
 //local import
+//import { log } from "./utils/log";
 import { start } from "./managers/managerClient";
 import { dbconnect } from "./database/mongoose";
-console.log('adasd');
-//import { log } from "./utils/log";
-
 
 (async () => {
-  process.env['TIMEUP'] = `${new Date().getTime()} `;
   const client = new Client({
     partials:
       ["USER", "MESSAGE", "GUILD_MEMBER", "CHANNEL"],
@@ -18,6 +16,6 @@ console.log('adasd');
   });
 
   await dbconnect().catch(console.log);
-  start(client);
+  await start(client);
 
 })();
