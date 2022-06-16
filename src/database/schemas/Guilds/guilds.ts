@@ -1,6 +1,12 @@
 import { Schema, model } from "mongoose";
 import { configbot } from "../../../configuration/bot";
 
+export interface interfaceGuild {
+	prefix: string,
+	guidId: String,
+}
+
+
 const schema = new Schema({
 	guidId: { type: String, required: true },
 	prefix: { type: String, default: configbot.prefix },
@@ -9,8 +15,5 @@ const schema = new Schema({
 		channel: [{ type: String }],
 	},
 })
-export interface interfaceGuild {
-	prefix: string,
-	guidId: String,
-}
+
 export const Guilds = model('Guilds', schema)

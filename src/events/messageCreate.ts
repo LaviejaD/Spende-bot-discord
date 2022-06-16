@@ -1,7 +1,7 @@
 import { Client } from 'discord.js'
 
 // import { log } from '../utils/log';
-import { GuildsGet, interfaceguilResult } from '../database/cache/Guilds/guildscache'
+import { GuildsGet } from '../database/get/guildscache'
 
 import { managerCommands } from '../managers/managerCommands'
 
@@ -11,7 +11,8 @@ export function execute(client: Client) {
 
     if (message.author.bot) return;
     console.log(message.content)
-    const guilResult: interfaceguilResult = await GuildsGet(`${message.guild?.id}`);
+
+    const guilResult = await GuildsGet(`${message.guild?.id}`);
     if (message.content.startsWith(guilResult.prefix)) {
 
       managerCommands(client, message);

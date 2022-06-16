@@ -5,7 +5,7 @@ import { join } from 'path';
 // local import
 import { log } from "../utils/log";
 import { interfaceCommands } from "../commands/commandsinter"
-import { GuildsGet } from '../database/cache/Guilds/guildscache'
+import { GuildsGet } from '../database/get/guildscache'
 
 //const for Commands 
 export const Commands = new Map<string, { pathfile: string, alise }>()

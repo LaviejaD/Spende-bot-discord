@@ -1,0 +1,6 @@
+{
+	"obsSwitcher.fileNames": [
+		"*.env*",
+		".env"
+	]
+}

@@ -1,5 +1,3 @@
-
-
 import { CommandInteraction, Client, MessageEmbed } from "discord.js";
 import { SlashCommandBuilder } from '@discordjs/builders';
 
@@ -23,7 +21,7 @@ async function execute(client: Client, interaction: CommandInteraction): Promise
 		const mention = interaction.options.getMentionable('mention');
 
 
-		const AvatarUrl = (id, idavatar) => `https://cdn.discordapp.com/avatars/${id}/${idavatar}.webp`;
+		const AvatarUrl = (id, idavatar) => `https://cdn.discordapp.com/avatars/${id}/${idavatar}.webp?size=1024`;
 		const avatarOption = { dynamic: true }
 		//@ts-ignore
 		const avatar = mention ? AvatarUrl(mention.user.id, mention.user.avatar) : interaction.user.avatarURL(avatarOption);

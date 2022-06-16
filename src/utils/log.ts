@@ -1,18 +1,20 @@
 
 //module import
-import logger from 'node-color-log';
-
+import { red, yellow, blue, magenta, white, yellowBright, greenBright } from 'cli-color';
+// logger.color('yellow').bgColor('red').reverse().log(`[Error-Loader]-[${message}]`)
+// logger.color('yellow').log(`[Loader]-[${message}]`)
+//logger.color('black').bgColor('yellow').log(`[warng]-[${message}]`)
+//logger.reverse().color('green').log(`[Ok]-[${message}]`)
 const logfuctions = {
-	"error": (message: string) => logger.color('red').log(`[Error]-[${message}]`).error(),
-	"error-loader": (message: string) => logger.color('yellow').bgColor('red').reverse().log(`[Error-Loader]-[${message}]`),
-	"loader": (message: string) => logger.color('yellow').log(`[Loader]-[${message}]`),
-	"warng": (message: string) => logger.color('black').bgColor('yellow').log(`[warng]-[${message}]`),
-	"default": (message: string) => logger.reverse().color('green').log(`[Ok]-[${message}]`)
+	"error": (message: string) => red(`[${blue('Error')}]-[${yellow(message)}]`),
+	"error-loader": (message: string) => red(`[${blue('Error-Loading')}]-[${yellow(message)}]`),
+	"loader": (message: string) => magenta(`[${white('Loading')}]-[${yellow(message)}]`),
+	"warng": (message: string) => red(`[${yellowBright('Warg')}]-[${yellow(message)}]`),
+	"default": (message: string) => greenBright(`[${blue('Ok')}]-[${yellow(message)}]`),
 }
 
 type logtypes = "error" | "error-loader" | "loader" | "warng" | "default";
 export function log(message: string, type: logtypes = "default") {
-	logfuctions[type](message);
+	console.log(logfuctions[type](message));
 
 }
-

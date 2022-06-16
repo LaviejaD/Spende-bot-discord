@@ -1,21 +1,10 @@
-//module import
-import { Client } from "discord.js";
-import { config } from "dotenv";
+import { Main } from "./main";
+import { fork } from 'child_process';
 
-config();
-//local import
-//import { log } from "./utils/log";
-import { start } from "./managers/managerClient";
-import { dbconnect } from "./database/mongoose";
+(() => {
 
-(async () => {
-  const client = new Client({
-    partials:
-      ["USER", "MESSAGE", "GUILD_MEMBER", "CHANNEL"],
-    intents: [4611]
-  });
+	//const forkProcess = fork('./src/main.ts');
+	Main()
 
-  await dbconnect().catch(console.log);
-  await start(client);
 
-})();
+})()

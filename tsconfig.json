@@ -63,5 +63,5 @@
   "exclude": [
     "node_modules",
     "./src/utils/interface"
-  ]
+  ],
 }
