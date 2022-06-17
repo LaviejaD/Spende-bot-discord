@@ -1,18 +1,22 @@
 import { Schema, model } from "mongoose";
-import { configbot } from "../../../configuration/bot";
+import { prefix } from "../../../configuration/bot";
 
 export interface interfaceGuild {
 	prefix: string,
-	guidId: String,
+	guildId: String,
+	antilink: {
+		enabled: boolean,
+		channels: String[],
+	}
 }
 
 
-const schema = new Schema({
-	guidId: { type: String, required: true },
-	prefix: { type: String, default: configbot.prefix },
+const schema = new Schema<interfaceGuild>({
+	guildId: { type: String, required: true },
+	prefix: { type: String, default: prefix },
 	antilink: {
-		on: { type: Boolean, default: false },
-		channel: [{ type: String }],
+		enabled: { type: Boolean, default: false },
+		channels: [{ type: String, default: [] }],
 	},
 })
 

@@ -1,3 +1,5 @@
+import { log } from "../utils/log";
+
 export class Cachedata<t> {
 	private map: Map<string, t> = new Map<string, t>();
 	private delmap: Map<string, number> = new Map<string, number>()
@@ -25,6 +27,7 @@ export class Cachedata<t> {
 				this.map.delete(key);
 				this.delmap.delete(key);
 				clearInterval(del);
+				log(`Deleted ${key} from cache`);
 			}
 		}, this.time);
 	}

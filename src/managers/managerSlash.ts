@@ -5,8 +5,8 @@ import { REST } from "@discordjs/rest";
 import { Routes } from "discord-api-types/v9";
 
 import { log } from "../utils/log";
-import { configbot } from "../configuration/bot";
-const { GuildId } = configbot;
+import { GuildId } from "../configuration/bot";
+
 
 interface slashcommandIterface {
 	name: string, data: any, execute(client: Client, interaction: Interaction): void

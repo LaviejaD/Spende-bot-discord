@@ -2,7 +2,7 @@ import { CommandInteraction, MessageEmbed, Client } from "discord.js";
 import { SlashCommandBuilder } from '@discordjs/builders';
 
 function data() {
-	return new SlashCommandBuilder().setName('bot_stats').setDescription('look info for bot').setDefaultPermission(true);
+	return new SlashCommandBuilder().setName('bot').setDescription('bot config').setDefaultPermission(true);
 }
 
 async function execute(client: Client, interaction: CommandInteraction) {
