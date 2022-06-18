@@ -11,6 +11,7 @@ async function guildSet(guildId: string) {
 	const guild = {
 		guildId: guildId,
 		prefix: guildf?.prefix ?? prefix,
+		adminroles: guildf?.adminroles ?? [],
 		antilink: {
 			enabled: guildf?.antilink?.enabled ?? false,
 			channels: guildf?.antilink?.channels ?? [],

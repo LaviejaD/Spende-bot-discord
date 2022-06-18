@@ -4,6 +4,7 @@ import { prefix } from "../../../configuration/bot";
 export interface interfaceGuild {
 	prefix: string,
 	guildId: String,
+	adminroles: String[],
 	antilink: {
 		enabled: boolean,
 		channels: String[],
@@ -14,6 +15,7 @@ export interface interfaceGuild {
 const schema = new Schema<interfaceGuild>({
 	guildId: { type: String, required: true },
 	prefix: { type: String, default: prefix },
+	adminroles: [{ type: String, default: [] }],
 	antilink: {
 		enabled: { type: Boolean, default: false },
 		channels: [{ type: String, default: [] }],
