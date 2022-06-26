@@ -34,7 +34,7 @@ async function execute(client: Client, interaction: CommandInteraction) {
 					value: `${client.channels.cache.size}`, inline: true
 				},
 				{
-					name: `:hourglass: Ping`,
+					name: `:hourglass: Ping `,
 					value: `${client.ws.ping}ms`, inline: true
 				},
 				{
