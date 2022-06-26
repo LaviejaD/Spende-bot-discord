@@ -21,4 +21,8 @@ export async function Main() {
 
 }
 
+process.on('message', (msg) => {
+  msg === 'start' && Main();
+  msg === 'exit' && process.exit(0);
 
+})
