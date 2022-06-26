@@ -7,7 +7,6 @@ function data() {
 
 async function execute(client: Client, interaction: CommandInteraction) {
 
-
 	const memoria_usada = Math.floor(process.memoryUsage().heapUsed / 1024 / 1024);
 	const memoria_total = Math.floor(totalmem() / 1024 / 1024)
 	console.log(`Memoria usada: ${memoria_usada} MB`)
@@ -15,7 +14,6 @@ async function execute(client: Client, interaction: CommandInteraction) {
 	console.log((memoria_usada * 100) / memoria_total);
 
 	const time = Math.floor(process.uptime());
-	const second = time % 60;
 	const minute = Math.floor(time / 60);
 	const hour = Math.floor(minute / 60)
 	const day = Math.floor(hour / 24);
@@ -38,7 +36,8 @@ async function execute(client: Client, interaction: CommandInteraction) {
 				{
 					name: `:hourglass: Ping`,
 					value: `${client.ws.ping}ms`, inline: true
-				}, {
+				},
+				{
 					name: `:busts_in_silhouette: users`,
 					value: `${client.users.cache.size}`, inline: true
 				},
@@ -50,7 +49,7 @@ async function execute(client: Client, interaction: CommandInteraction) {
 					name: `:floppy_disk: Ram Memory usage`,
 					value: `${((memoria_usada * 100) / memoria_total).toFixed(2)}% of ${memoria_total}MB`,
 					inline: true
-				},
+				}
 
 			])
 			.setColor('RANDOM')
