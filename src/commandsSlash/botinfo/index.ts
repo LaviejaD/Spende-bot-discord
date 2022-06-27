@@ -23,7 +23,9 @@ async function execute(client: Client, interaction: CommandInteraction) {
 		const embed = new MessageEmbed()
 			.setAuthor(interaction.user.username, interaction.user.avatarURL())
 			.setTitle(`${client.user.username}`)
-			.setThumbnail(`${client.user.avatarURL()}`)
+			.setThumbnail(`${client.user.avatarURL({
+				dynamic: true,
+			})}`)
 			.setFields([
 				{
 					name: ':globe_with_meridians: Servers',

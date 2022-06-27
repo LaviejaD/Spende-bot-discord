@@ -17,8 +17,6 @@ export async function Main() {
 
   await dbconnect().catch(console.log);
   start(client);
-
-
 }
 
 process.on('message', (msg) => {
