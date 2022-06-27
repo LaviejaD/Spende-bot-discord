@@ -3,7 +3,7 @@ import { prefix } from "../../../configuration/bot";
 
 export interface interfaceGuild {
 	prefix: string,
-	guildId: String,
+	guildId: string,
 	adminroles: String[],
 	antilink: {
 		enabled: boolean,
