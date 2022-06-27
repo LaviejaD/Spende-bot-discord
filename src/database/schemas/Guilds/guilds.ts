@@ -4,10 +4,10 @@ import { prefix } from "../../../configuration/bot";
 export interface interfaceGuild {
 	prefix: string,
 	guildId: string,
-	adminroles: String[],
+	adminroles: string[],
 	antilink: {
 		enabled: boolean,
-		channels: String[],
+		channels: string[],
 	}
 }
 

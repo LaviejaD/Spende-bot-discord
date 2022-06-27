@@ -7,7 +7,7 @@ async function guildSet(guildId: string) {
 
 	const guildf: interfaceGuild = await Guilds.find({ guildId: guildId }).catch(console.log)[0];
 
-	guildf ?? await Guilds.create({ guildId: guildId })
+	guildf ? 'Ok' : await Guilds.create({ guildId: guildId })
 	const guild = {
 		guildId: guildId,
 		prefix: guildf?.prefix ?? prefix,

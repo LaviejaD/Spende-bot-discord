@@ -49,7 +49,7 @@ async function execute(client: Client, interaction: CommandInteraction) {
 				},
 				{
 					name: `:floppy_disk: Ram Memory usage`,
-					value: `${((memoria_usada * 100) / memoria_total).toFixed(2)}% of ${memoria_total}MB`,
+					value: `${((memoria_usada * 100) / (process.env.DEV ? memoria_total : 450)).toFixed(2)}% of ${memoria_total}MB`,
 					inline: true
 				}
 
@@ -59,7 +59,6 @@ async function execute(client: Client, interaction: CommandInteraction) {
 			.setTimestamp()
 		await interaction.reply({
 			embeds: [embed]
-
 		});
 	} catch (error) {
 		interaction.reply(`${error}`);
