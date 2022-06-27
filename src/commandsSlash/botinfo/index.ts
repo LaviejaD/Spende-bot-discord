@@ -60,9 +60,7 @@ async function execute(client: Client, interaction: CommandInteraction) {
 
 		});
 	} catch (error) {
-
-		console.log(error)
-
+		interaction.reply(`${error}`);
 	}
 }
 module.exports = {
