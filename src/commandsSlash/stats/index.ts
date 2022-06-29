@@ -8,7 +8,7 @@ function data() {
 async function execute(client: Client, interaction: CommandInteraction) {
 
 	const memoria_usada = Math.floor(process.memoryUsage().heapUsed / 1024 / 1024);
-	const memoria_total = Math.floor(totalmem() / 1024 / 1024)
+	const memoria_total = process.env.DEV ? Math.floor(totalmem() / 1024 / 1024) : 450
 	console.log(`Memoria usada: ${memoria_usada} MB`)
 	console.log(`Memoria total: ${memoria_total} MB`)
 	console.log((memoria_usada * 100) / memoria_total);
@@ -49,7 +49,7 @@ async function execute(client: Client, interaction: CommandInteraction) {
 				},
 				{
 					name: `:floppy_disk: Ram Memory usage`,
-					value: `${((memoria_usada * 100) / (process.env.DEV ? memoria_total : 450)).toFixed(2)}% of ${memoria_total}MB`,
+					value: `${((memoria_usada * 100) / memoria_total).toFixed(2)}% of ${memoria_total}MB`,
 					inline: true
 				}
 

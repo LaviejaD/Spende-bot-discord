@@ -27,16 +27,4 @@ class Customprocess {
 	main.star();
 	setTimeout(() => { main.restart() }, 43_200_000);
 
-	// setInterval(() => {
-	// 	const time = Math.floor(process.uptime());
-	// 	const second = time % 60;
-	// 	const minute = Math.floor(time / 60);
-	// 	const hour = Math.floor(minute / 60)
-	// 	const day = Math.floor(hour / 24);
-
-
-
-	// 	console.log(`dias: ${day}  horas: ${hour}  minutos:${minute}  segundos: ${second}`);
-	// }, 1000)
-
 })(); 
