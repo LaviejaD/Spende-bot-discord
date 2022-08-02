@@ -16,6 +16,10 @@ export function start(client: Client) {
 		ManagerEvents(client)
 	]).finally(async () => {
 		await client.login(process.env['BOT_TOKEN'])
+
+		client.guilds.fetch('807774856175288360').then(guild => {
+			guild.commands.set([])
+		}).catch(console.log);
 		log('Commands Ready')
 		log(`Slash Commands Ready`)
 		log('Events is Ready')

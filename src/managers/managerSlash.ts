@@ -34,8 +34,9 @@ export function SlashRegister() {
 		const route = process.env['DEV'] == "true"
 			? Routes.applicationGuildCommands(`${process.env['BOTCLIENT']}`, GuildId)
 			: Routes.applicationCommands(`${process.env['BOTCLIENT']}`);
+		//console.log(Commands)
 		try { await rest.put(route, { body: Commands }) }
-		catch (error) { console.log(error.name) }
+		catch (error) { console.log(error.rawError) }
 		done()
 	})
 }

@@ -1,11 +1,11 @@
 import { CommandInteraction, Client } from "discord.js";
-import { data } from "./data";
+import data from "./data";
 import { Guilds } from "../../database/schemas/Guilds/guilds";
 import adminrole from "./Admin-role";
 import antilink from "./Anti-links";
 
 
-async function execute(client: Client, interaction: CommandInteraction) {
+async function execute(_client: Client, interaction: CommandInteraction) {
 
 	try {
 		const guild = await Guilds.findOne({ guildId: interaction.guild.id });
@@ -20,11 +20,12 @@ async function execute(client: Client, interaction: CommandInteraction) {
 				channels: [...guild.antilink.channels]
 			}
 		}
-		// @ts-ignore
-		if (!interaction.memberPermissions.has('ADMINISTRATOR') || interaction.member.roles.cache.hasAny(updateobject.adminroles)) return interaction.reply(
-			{
-				content: 'you are not admin to use this command'
-			});
+
+		if (!interaction.memberPermissions.has('ADMINISTRATOR') //@ts-ignore
+			|| interaction.member.roles.cache.hasAny(updateobject.adminroles)) return interaction.reply(
+				{
+					content: 'you are not admin to use this command'
+				});
 		const subcommand = interaction.options.getSubcommand();
 		if (subcommand === 'custom-prefix') {
 			const prefix = interaction.options.getString('set-prefix');
@@ -36,12 +37,12 @@ async function execute(client: Client, interaction: CommandInteraction) {
 		}
 		if (subcommand === 'admin-roles') {
 			change = true;
-			// @ts-ignore
-			updateobject.adminrole = adminrole(interaction, updateobject.adminrole);
+
+			updateobject.adminroles = adminrole(interaction, updateobject.adminroles);
 		}
 		if (subcommand === 'anti-link') {
 			change = true;
-			//@ts-ignores	
+
 			updateobject.antilink = antilink(interaction, updateobject.antilink);
 		}
 		if (change) {

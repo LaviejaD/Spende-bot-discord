@@ -13,7 +13,6 @@ function data() {
 	return data
 }
 
-
 async function execute(client: Client, interaction: CommandInteraction): Promise<void> {
 
 	try {
@@ -22,9 +21,10 @@ async function execute(client: Client, interaction: CommandInteraction): Promise
 
 
 		const AvatarUrl = (id, idavatar) => `https://cdn.discordapp.com/avatars/${id}/${idavatar}.webp?size=1024`;
-		const avatarOption = { dynamic: true }
+		const avatarOption = { dynamic: true, size: 1024 };
 		//@ts-ignore
 		const avatar = mention ? AvatarUrl(mention.user.id, mention.user.avatar) : interaction.user.avatarURL(avatarOption);
+
 		const AvatarEmbed = new MessageEmbed()
 			.setImage(avatar)
 			.setColor('RANDOM')

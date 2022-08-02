@@ -1,6 +1,6 @@
 import { CommandInteraction } from "discord.js";
 
-type updateAdminrole = String[];
+type updateAdminrole = string[];
 
 function adminrole(interaction: CommandInteraction, updateobject: updateAdminrole): updateAdminrole {
 

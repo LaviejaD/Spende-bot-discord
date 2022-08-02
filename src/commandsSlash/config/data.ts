@@ -1,5 +1,5 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
-export function data() {
+export default function data() {
 	return new SlashCommandBuilder()
 		.setName('config')
 		.setDescription('configurate the bot')

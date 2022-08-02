@@ -9,9 +9,6 @@ async function execute(client: Client, interaction: CommandInteraction) {
 
 	const memoria_usada = Math.floor(process.memoryUsage().heapUsed / 1024 / 1024);
 	const memoria_total = process.env.DEV ? Math.floor(totalmem() / 1024 / 1024) : 450
-	console.log(`Memoria usada: ${memoria_usada} MB`)
-	console.log(`Memoria total: ${memoria_total} MB`)
-	console.log((memoria_usada * 100) / memoria_total);
 
 	const time = Math.floor(process.uptime());
 	const minute = Math.floor(time / 60);
