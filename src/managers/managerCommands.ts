@@ -57,9 +57,9 @@ export function registerCommands() {
 export async function managerCommands(client: Client, message: Message) {
 
 	const { prefix }: { prefix: string } = await GuildsGet(`${message.guild?.id}`);
-	const args = message.content.trim().split(/ +/g); 
+	const args = message.content.trim().split(/ +/g);
 	const cmd = args[0].slice(prefix.length).toLowerCase()
-	let comando: interfaceCommands | boolean = false;
+	let comando: interfaceCommands | undefined = undefined;
 
 	if (!Commands.has(cmd)) Commands.forEach((value) =>
 		comando = value.alise.includes(cmd) ? require(value.pathfile).execute : false)
@@ -68,4 +68,4 @@ export async function managerCommands(client: Client, message: Message) {
 	//@ts-ignore
 	if (comando) comando(message, args, client);
 
-}
+} 

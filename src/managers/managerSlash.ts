@@ -36,7 +36,7 @@ export function SlashRegister() {
 			: Routes.applicationCommands(`${process.env['BOTCLIENT']}`);
 		//console.log(Commands)
 		try { await rest.put(route, { body: Commands }) }
-		catch (error) { console.log(error.rawError) }
+		catch (error) { console.log(error.rawError.errors['3']._errors) }
 		done()
 	})
 }

@@ -1,5 +1,3 @@
-"strict"
-
 //module import
 import { Client } from 'discord.js';
 // local import
@@ -15,11 +13,16 @@ export function start(client: Client) {
 		registerCommands(),
 		ManagerEvents(client)
 	]).finally(async () => {
-		await client.login(process.env['BOT_TOKEN'])
 
-		client.guilds.fetch('807774856175288360').then(guild => {
-			guild.commands.set([])
-		}).catch(console.log);
+		await client.login(process.env['BOT_TOKEN']).then(
+			() => client.channels.fetch('850852816884858910')
+
+				.then(res =>
+					//@ts-ignore
+					res.send('Bot is Ready')
+				)
+		)
+
 		log('Commands Ready')
 		log(`Slash Commands Ready`)
 		log('Events is Ready')

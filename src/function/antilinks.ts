@@ -5,8 +5,6 @@ export default async function antiLinks(message: Message, channels: string[]) {
 	console.log(urls)
 	if (urls.length > 0) {
 		const WhileList = channels.includes(message.channel.id)
-
-
 		if (!WhileList) {
 
 			console.log(message.channel.toString())
